@@ -1,11 +1,11 @@
 # Go LiteLLM
 
-A lightweight Go-based server for generating responses using OpenAI's API.
+A lightweight Go-based server for routing requests to various LLM providers and diffusion models, including OpenAI's API.
 
 ## Prerequisites
 
 - Go 1.20 or later installed on your system.
-- An OpenAI API key. You can obtain one from [OpenAI](https://platform.openai.com/).
+- API keys for the LLM providers or diffusion models you plan to use (e.g., OpenAI, Stability AI, etc.).
 
 ## Getting Started
 
@@ -20,10 +20,11 @@ cd golang-litellm
 
 ### 2. Set Up Environment Variables
 
-Export your OpenAI API key as an environment variable:
+Export your API keys as environment variables:
 
 ```bash
 export OPENAI_API_KEY=your_openai_api_key
+export STABILITY_API_KEY=your_stability_api_key
 ```
 
 ### 3. Install Dependencies
@@ -48,7 +49,7 @@ The server will start on `http://localhost:1323`.
 
 ### `POST /generate`
 
-Generate a response using OpenAI's API. Send a JSON payload with the required input.
+Generate a response using the configured LLM provider. Send a JSON payload with the required input.
 
 Example:
 
@@ -56,6 +57,18 @@ Example:
 curl -X POST http://localhost:1323/generate \
 -H "Content-Type: application/json" \
 -d '{"prompt": "Hello, how are you?"}'
+```
+
+### `POST /diffuse`
+
+Generate an image using a diffusion model. Send a JSON payload with the required input.
+
+Example:
+
+```bash
+curl -X POST http://localhost:1323/diffuse \
+-H "Content-Type: application/json" \
+-d '{"prompt": "A futuristic cityscape at sunset"}'
 ```
 
 ## Development

@@ -57,6 +57,12 @@
 ### API Endpoints
 - Define endpoints in `server/main.go` and implement handlers in `server/handlers`.
 
+### Supported Providers
+- This project supports routing requests to multiple LLM providers and diffusion models, such as:
+  - OpenAI
+  - Stability AI
+  - Other compatible APIs
+
 ---
 
 This file provides essential guidelines and commands for agents working in this repository.
